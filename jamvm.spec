@@ -33,7 +33,7 @@ Source0:        http://superb-east.dl.sourceforge.net/jamvm/jamvm-%{originver}.t
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  java-devel
 BuildRequires:  jpackage-utils >= 0:1.5
-BuildRequires:  libffi-devel
+BuildRequires:  ffi-devel
 Requires:       gcj-tools
 Requires(post): classpath >= 0:0.19
 Requires(postun): classpath >= 0:0.19
