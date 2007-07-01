@@ -23,7 +23,7 @@
 
 Name:           jamvm
 Version:        %{originver}
-Release:        %mkrel 3
+Release:        %mkrel 4
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
