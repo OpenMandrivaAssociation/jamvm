@@ -23,7 +23,7 @@
 
 Name:           jamvm
 Version:        %{originver}
-Release:        %mkrel 6
+Release:        %mkrel 7
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
@@ -35,13 +35,10 @@ BuildRequires:  eclipse-ecj
 BuildRequires:  java-1.5.0-gcj-devel
 BuildRequires:  jpackage-utils >= 0:1.5
 BuildRequires:  ffi-devel
-Requires:       gcj-tools
 Requires(post): classpath
 Requires(postun): classpath
 Requires(post): jpackage-utils >= 0:1.6.3
 Requires(postun): jpackage-utils >= 0:1.6.3
-Requires(post): gcj-tools
-Requires(postun): gcj-tools
 Provides:       jre-%{javaver}-%{origin} = %{epoch}:%{java_version}-%{release}
 Provides:       jre-%{origin} = %{epoch}:%{java_version}-%{release}
 Provides:       jre-%{javaver}, java-%{javaver}, jre = %{epoch}:%{javaver}
