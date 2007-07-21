@@ -23,7 +23,7 @@
 
 Name:           jamvm
 Version:        %{originver}
-Release:        %mkrel 5
+Release:        %mkrel 6
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
@@ -92,8 +92,7 @@ rm -rf %{buildroot}
 %{__mkdir_p} $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib
 
 # create extensions symlinks
-# jessie
-ln -s %{_javadir}/jsse.jar $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/jsse.jar
+ln -s %{_datadir}/classpath/glibj.zip $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/jsse.jar
 
 # extensions handling
 install -dm 755 $RPM_BUILD_ROOT%{jvmjardir}
