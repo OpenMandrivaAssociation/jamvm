@@ -31,7 +31,8 @@ License:        GPL
 URL:            http://jamvm.sourceforge.net/
 Source0:        http://superb-east.dl.sourceforge.net/jamvm/jamvm-%{originver}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:  java-devel
+BuildRequires:  eclipse-ecj
+BuildRequires:  java-1.5.0-gcj-devel
 BuildRequires:  jpackage-utils >= 0:1.5
 BuildRequires:  ffi-devel
 Requires:       gcj-tools
@@ -75,14 +76,14 @@ export JAVA=%{java}
 export JAVAC=%{javac}
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
-%configure2_5x \
+%{configure2_5x} \
   --enable-ffi \
   --with-classpath-install-dir=%{_prefix}
-%make
+%{make}
 
 %install
-rm -rf %{buildroot}
-%makeinstall
+%{__rm} -rf %{buildroot}
+%{makeinstall}
 
 %{__mkdir_p} $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/bin
 (cd $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/bin \
@@ -133,7 +134,7 @@ find $RPM_BUILD_ROOT%{_jvmdir}/%{sdkdir}/bin -type f -o -type l \
 %{__rm} -rf %{buildroot}/%{_includedir}
 
 %clean
-rm -rf %{buildroot}
+%{__rm} -rf %{buildroot}
 
 %post
 update-alternatives \
@@ -206,5 +207,3 @@ fi
 %{_bindir}/%{origin}
 %{_datadir}/%{origin}
 %{_prefix}/%{_lib}/%{name}/libjvm.*
-
-
