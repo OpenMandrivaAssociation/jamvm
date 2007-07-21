@@ -7,7 +7,7 @@
 %define section         free
 
 %define priority        1410
-%define javaver         1.4.2
+%define javaver         1.5.0
 %define buildver        0
 
 %define java_version    %{javaver}.%{buildver}
@@ -23,7 +23,7 @@
 
 Name:           jamvm
 Version:        %{originver}
-Release:        %mkrel 4
+Release:        %mkrel 5
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
@@ -35,8 +35,8 @@ BuildRequires:  java-devel
 BuildRequires:  jpackage-utils >= 0:1.5
 BuildRequires:  ffi-devel
 Requires:       gcj-tools
-Requires(post): classpath >= 0:0.19
-Requires(postun): classpath >= 0:0.19
+Requires(post): classpath
+Requires(postun): classpath
 Requires(post): jpackage-utils >= 0:1.6.3
 Requires(postun): jpackage-utils >= 0:1.6.3
 Requires(post): gcj-tools
@@ -138,10 +138,10 @@ rm -rf %{buildroot}
 
 %post
 update-alternatives \
-  --install %{_bindir}/java java %{_jvmdir}/%{jredir}/bin/java %{priority} \
+  --install %{_bindir}/java java %{_jvmdir}/%{jrelnk}/bin/java %{priority} \
   --slave %{_jvmdir}/jre          jre          %{_jvmdir}/%{jrelnk} \
   --slave %{_jvmjardir}/jre       jre_exports  %{_jvmjardir}/%{jrelnk} \
-  --slave %{_bindir}/rmiregistry  rmiregistry  %{_jvmdir}/%{jredir}/bin/rmiregistry
+  --slave %{_bindir}/rmiregistry  rmiregistry  %{_jvmdir}/%{jrelnk}/bin/rmiregistry
 
 update-alternatives \
   --install %{_jvmdir}/jre-%{origin} \
@@ -187,7 +187,7 @@ update-alternatives --install %{_javadir}/jaxp_transform_impl.jar \
 
 %postun
 if [ $1 -eq 0 ] ; then
-   update-alternatives --remove java %{_jvmdir}/%{jredir}/bin/java 
+   update-alternatives --remove java %{_jvmdir}/%{jrelnk}/bin/java 
    update-alternatives --remove jre_%{origin}  %{_jvmdir}/%{jrelnk}
    update-alternatives --remove jre_%{javaver} %{_jvmdir}/%{jrelnk}
    update-alternatives --remove jaxp_parser_impl \
