@@ -23,7 +23,7 @@
 
 Name:           jamvm
 Version:        %{originver}
-Release:        %mkrel 7
+Release:        %mkrel 8
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
@@ -33,7 +33,7 @@ Source0:        http://superb-east.dl.sourceforge.net/jamvm/jamvm-%{originver}.t
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  eclipse-ecj
 BuildRequires:  java-1.5.0-gcj-devel
-BuildRequires:  jpackage-utils >= 0:1.5
+BuildRequires:  java-rpmbuild >= 0:1.5
 BuildRequires:  ffi-devel
 Requires(post): classpath
 Requires(postun): classpath
