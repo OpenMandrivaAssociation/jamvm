@@ -30,7 +30,6 @@ Group:          Development/Java
 License:        GPL
 URL:            http://jamvm.sourceforge.net/
 Source0:        http://superb-east.dl.sourceforge.net/jamvm/jamvm-%{originver}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  eclipse-ecj
 BuildRequires:  java-1.5.0-gcj-devel
 BuildRequires:  java-rpmbuild >= 0:1.5
