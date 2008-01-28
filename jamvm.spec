@@ -1,8 +1,7 @@
 %define origin          jamvm
-%define version         1.4.5
 %define originver       %{version}
 
-%define _libdir         %{_prefix}/%{_lib}/%{name}
+%define _libdir         %{_prefix}/%{_lib}/%{origin}
 
 %define section         free
 
@@ -22,14 +21,14 @@
 %define jvmjardir        %{_jvmjardir}/%{cname}-%{java_version}
 
 Name:           jamvm
-Version:        %{originver}
-Release:        %mkrel 8
+Version:        1.5.0
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
 License:        GPL
 URL:            http://jamvm.sourceforge.net/
-Source0:        http://superb-east.dl.sourceforge.net/jamvm/jamvm-%{originver}.tar.bz2
+Source0:        http://downloads.sourceforge.net/jamvm/jamvm-%{originver}.tar.gz
 BuildRequires:  eclipse-ecj
 BuildRequires:  java-1.5.0-gcj-devel
 BuildRequires:  java-rpmbuild >= 0:1.5
@@ -51,6 +50,7 @@ Obsoletes:      java-%{javaver}-%{origin}
 Provides:       java-%{javaver}-%{origin}
 #Provides:      %{origin} = %{epoch}:%{originver}
 ExcludeArch:    sparc
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 JamVM is a new Java Virtual Machine which conforms to the JVM 
@@ -79,7 +79,7 @@ export JAVADOC=%{javadoc}
 
 %install
 %{__rm} -rf %{buildroot}
-%{makeinstall}
+%{makeinstall_std}
 
 %{__mkdir_p} $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/bin
 (cd $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/bin \
@@ -193,8 +193,9 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %files -f %{name}-%{version}.files
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc ACKNOWLEDGEMENTS AUTHORS COPYING INSTALL NEWS README
+%defattr(-,root,root,0755)
 %dir %{_jvmdir}/%{sdkdir}
 %dir %{jvmjardir}
 %{jvmjardir}/*.jar
@@ -202,4 +203,4 @@ fi
 %{_jvmjardir}/%{jrelnk}
 %{_bindir}/%{origin}
 %{_datadir}/%{origin}
-%{_prefix}/%{_lib}/%{name}/libjvm.*
+%{_libdir}
