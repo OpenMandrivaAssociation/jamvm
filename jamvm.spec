@@ -21,8 +21,8 @@
 %define jvmjardir        %{_jvmjardir}/%{cname}-%{java_version}
 
 Name:           jamvm
-Version:        1.5.1
-Release:        %mkrel 2
+Version:        1.5.3
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
