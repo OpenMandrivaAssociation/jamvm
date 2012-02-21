@@ -22,7 +22,7 @@
 
 Name:           jamvm
 Version:        1.5.3
-Release:        %mkrel 2
+Release:        %mkrel 3
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
