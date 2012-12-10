@@ -32,7 +32,7 @@ Source0:        http://downloads.sourceforge.net/jamvm/jamvm-%{originver}.tar.gz
 BuildRequires:  eclipse-ecj
 BuildRequires:  java-1.5.0-gcj-devel
 BuildRequires:  java-rpmbuild >= 0:1.5
-BuildRequires:  ffi-devel
+BuildRequires:  pkgconfig(libffi)
 Requires(post): classpath
 Requires(postun): classpath
 Requires(post): jpackage-utils >= 0:1.6.3
@@ -50,7 +50,6 @@ Obsoletes:      java-%{javaver}-%{origin}
 Provides:       java-%{javaver}-%{origin}
 #Provides:      %{origin} = %{epoch}:%{originver}
 ExcludeArch:    sparc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 JamVM is a new Java Virtual Machine which conforms to the JVM 
@@ -129,9 +128,6 @@ find $RPM_BUILD_ROOT%{_jvmdir}/%{sdkdir}/bin -type f -o -type l \
 
 %{__rm} -rf %{buildroot}/%{_includedir}
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %post
 update-alternatives \
   --install %{_bindir}/java java %{_jvmdir}/%{jrelnk}/bin/java %{priority} \
@@ -204,3 +200,107 @@ fi
 %{_bindir}/%{origin}
 %{_datadir}/%{origin}
 %{_libdir}
+
+
+%changelog
+* Tue Feb 21 2012 Jon Dill <dillj@mandriva.org> 0:1.5.3-3mdv2012.0
++ Revision: 778765
+- rebuild against new version of libffi4
+
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0:1.5.3-2mdv2011.0
++ Revision: 619779
+- the mass rebuild of 2010.0 packages
+
+* Mon Aug 03 2009 Frederik Himpe <fhimpe@mandriva.org> 0:1.5.3-1mdv2010.0
++ Revision: 408493
+- Update to new version 1.5.3
+
+* Thu Aug 07 2008 Thierry Vignaud <tv@mandriva.org> 0:1.5.1-2mdv2009.0
++ Revision: 267207
+- rebuild early 2009.0 package (before pixel changes)
+
+* Tue Apr 15 2008 Alexander Kurtakov <akurtakov@mandriva.org> 0:1.5.1-1mdv2009.0
++ Revision: 194102
+- new version
+
+* Mon Jan 28 2008 David Walluck <walluck@mandriva.org> 0:1.5.0-1mdv2008.1
++ Revision: 159484
+- 1.5.0
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Sun Dec 16 2007 Anssi Hannula <anssi@mandriva.org> 0:1.4.5-8mdv2008.1
++ Revision: 120923
+- buildrequire java-rpmbuild, i.e. build with icedtea on x86(_64)
+
+* Sat Jul 21 2007 David Walluck <walluck@mandriva.org> 0:1.4.5-7mdv2008.0
++ Revision: 54198
+- remove gcj-tools requirement
+- fix build
+
+* Sat Jul 21 2007 David Walluck <walluck@mandriva.org> 0:1.4.5-6mdv2008.0
++ Revision: 54176
+- fix jsse link
+- 1.5.0, not 1.4.2
+- %%{jrelnk}/bin not %%{jredir}/bin
+
+* Sun Jul 01 2007 Anssi Hannula <anssi@mandriva.org> 0:1.4.5-4mdv2008.0
++ Revision: 46809
+- build with ffi on all archs, fixes crash on non-x86_64
+
+
+* Wed Mar 14 2007 Frederic Crozat <fcrozat@mandriva.com> 1.4.5-2mdv2007.1
++ Revision: 143653
+- Fix update-alternative uninstall (diagnosed by pixel)
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - do not package empty ChangeLog
+
+* Wed Feb 14 2007 David Walluck <walluck@mandriva.org> 0:1.4.5-1mdv2007.1
++ Revision: 121154
+- 1.4.5
+
+* Fri Dec 15 2006 David Walluck <walluck@mandriva.org> 0:1.4.4-2mdv2007.1
++ Revision: 97248
+- change priority to be less than gcj
+
+* Thu Nov 09 2006 David Walluck <walluck@mandriva.org> 0:1.4.4-1mdv2007.1
++ Revision: 79927
+- 1.4.4
+- BuildRequires: libffi-devel on x86_64
+- Import jamvm
+
+* Tue Sep 05 2006 David Walluck <walluck@mandriva.org> 0:1.4.3-3mdv2007.0
+- ExcludeArch: sparc
+
+* Thu Jun 15 2006 David Walluck <walluck@mandriva.org> 0:1.4.3-2mdv2007.0
+- fix BuildRequires
+
+* Thu Jun 01 2006 David Walluck <walluck@mandriva.org> 0:1.4.3-1mdv2007.0
+- rebuild for libgcj.so.7
+- remove gnu-crypto and jessie dependencies
+
+* Wed Apr 26 2006 David Walluck <walluck@mandriva.org> 0:1.4.2-4mdk
+- set empty CLASSPATH
+- but back fix for lib directory
+
+* Thu Apr 13 2006 David Walluck <walluck@mandriva.org> 0:1.4.2-3mdk
+- CVS 20060411
+
+* Tue Feb 21 2006 David Walluck <walluck@mandriva.org> 0:1.4.2-2mdk
+- rebuild on x86_64
+
+* Tue Jan 31 2006 David Walluck <walluck@mandriva.org> 0:1.4.2-1mdk
+- 1.4.2
+
+* Sat Jan 14 2006 David Walluck <walluck@mandriva.org> 0:1.4.1-2mdk
+- add java and rmiregistry symlinks
+
+* Fri Jan 13 2006 David Walluck <walluck@mandriva.org> 0:1.4.1-1mdk
+- 1.4.1
+- change name to jamvm
+
+* Fri Nov 04 2005 David Walluck <walluck@mandriva.org> 0:1.4.2.0-0.0.1mdk
+- release
+
