@@ -3,8 +3,6 @@
 
 %define _libdir         %{_prefix}/%{_lib}/%{origin}
 
-%define section         free
-
 %define priority        1410
 %define javaver         1.5.0
 %define buildver        0
@@ -21,14 +19,14 @@
 %define jvmjardir        %{_jvmjardir}/%{cname}-%{java_version}
 
 Name:           jamvm
-Version:        1.5.3
-Release:        %mkrel 3
+Version:        1.5.4
+Release:        1
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
 License:        GPL
 URL:            http://jamvm.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/jamvm/jamvm-%{originver}.tar.gz
+Source0:        http://switch.dl.sourceforge.net/project/jamvm/jamvm/JamVM%%20%version/jamvm-%version.tar.gz
 BuildRequires:  eclipse-ecj
 BuildRequires:  java-1.5.0-gcj-devel
 BuildRequires:  java-rpmbuild >= 0:1.5
