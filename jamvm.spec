@@ -20,7 +20,7 @@
 
 Name:           jamvm
 Version:        1.5.4
-Release:        1
+Release:        2
 Epoch:          0
 Summary:        Java Virtual Machine which conforms to the JVM specification version 2
 Group:          Development/Java
