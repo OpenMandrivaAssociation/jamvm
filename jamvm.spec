@@ -22,8 +22,8 @@
 %define jvmjardir        %{_jvmjardir}/%{cname}-%{java_version}
 
 Name:           jamvm
-Version:        1.5.4
-Release:        2
+Version:        2.0.0
+Release:        1
 Summary:        Old but small JVM
 Group:          Development/Java
 License:        GPL
