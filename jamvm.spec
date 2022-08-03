@@ -42,7 +42,7 @@ bootstrapping the newer OpenJDK JVMs.
 
 %prep
 %autosetup -p1 -n %{origin}-%{originver}
-%{__perl} -pi -e 's|lib/classpath|%{_lib}/classpath|' src/dll.c
+%{__perl} -pi -e 's|lib/classpath|%{_lib}/classpath|' src/classlib/gnuclasspath/dll.c
 
 %build
 export CLASSPATH=
