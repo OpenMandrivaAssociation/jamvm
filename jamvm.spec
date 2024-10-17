@@ -27,7 +27,7 @@ Release:        1
 Summary:        Old but small JVM
 Group:          Development/Java
 License:        GPL
-URL:            http://jamvm.sourceforge.net/
+URL:            https://jamvm.sourceforge.net/
 Source0:        https://altushost-swe.dl.sourceforge.net/project/jamvm/jamvm/JamVM%20%{version}/jamvm-%{version}.tar.gz
 BuildRequires:  jikes
 BuildRequires:  pkgconfig(libffi)
