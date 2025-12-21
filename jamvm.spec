@@ -29,6 +29,11 @@ Group:          Development/Java
 License:        GPL
 URL:            https://jamvm.sourceforge.net/
 Source0:        https://altushost-swe.dl.sourceforge.net/project/jamvm/jamvm/JamVM%20%{version}/jamvm-%{version}.tar.gz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  jikes
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:	pkgconfig(zlib)
